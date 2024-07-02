@@ -6,7 +6,8 @@ export async function GET(request, { params }) {
   await dbConnect();
   try {
     const blogId = params.blogId;
-    const blog = await Post.findById(blogId).populate("author","avatar userName").populate({
+    const blog = await Post.findById(blogId).populate("author","avatar userName")
+    .populate({
       path: 'comments',
       populate: {
           path: 'user',

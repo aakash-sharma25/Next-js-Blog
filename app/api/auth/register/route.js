@@ -9,7 +9,7 @@ export async function POST(request) {
     const reqBody = await request.json();
     const { userName, email, password } = reqBody;
 
-    console.log(userName, email, password);
+    // console.log(userName, email, password);
 
     const user = await User.findOne({ email });
 

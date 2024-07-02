@@ -12,7 +12,7 @@ export default function AllBlogs() {
 
   const fetchBlogs = async () => {
     const { data } =await axios.get("/api/user/all-blogs");
-    console.log(data);
+    // console.log(data);
     setBlogs(data.blogs);
   };
   useEffect(() => {

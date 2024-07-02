@@ -31,7 +31,7 @@ export default function BlogCards({ blogs }) {
           return (
             <Card sx={{ maxWidth: 500, mt: 5 }}>
               <CardHeader
-                avatar={<Avatar>{blog?.author?.avatar}</Avatar>}
+                avatar={<Avatar src={blog?.author?.avatar}/>}
                 title={blog?.author?.userName}
                 subheader={blog?.updatedAt}
               />

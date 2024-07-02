@@ -10,7 +10,7 @@ export default function page() {
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
 
-  const handleSubmit = async (e) => { 
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (!email || email.trim() == "" || !password || password.trim() == "") {
@@ -25,7 +25,7 @@ export default function page() {
       router.push("/login");
     } catch (error) {
       alert("internal server error");
-      console.log(error)
+      console.log(error);
     }
   };
   return (
@@ -84,6 +84,15 @@ export default function page() {
         >
           Submit
         </Button>
+        <Typography textAlign={"center"}>
+          Already Have an account ?{" "}
+          <span
+            style={{ cursor: "pointer", color: "blue" }}
+            onClick={() => router.push("/login")}
+          >
+            Login Here
+          </span>{" "}
+        </Typography>
       </Box>
     </Container>
   );

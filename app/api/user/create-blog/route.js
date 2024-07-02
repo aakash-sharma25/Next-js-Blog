@@ -7,9 +7,9 @@ export async function POST(request) {
   await dbConnect();
   try {
     const reqBody = await request.json();
-    const { title, description, userId } = reqBody;
+    const { title, description, userId, image, video } = reqBody;
 
-    if (!title || !description || !userId) {
+    if (!title || !description || !userId || !image) {
       return NextResponse.json(
         {
           sucess: false,
@@ -18,24 +18,22 @@ export async function POST(request) {
         { status: 400 }
       );
     }
-    const postData = {
+    const post = await Post.create({
       author: userId,
       title: title,
       content: description,
-    };
-    console.log(postData)
-    const post = await Post.create(postData);
+      image: image,
+      video: video,
+    });
+    // console.log(post);
     let user = await User.findByIdAndUpdate(
       { _id: userId },
       { $push: { posts: post._id } }
     ).exec();
-    // const updatedUser = await User.findById(userId).populate("posts");
     const response = NextResponse.json(
       {
         message: "Blog Created  successfully",
         success: true,
-        // postData,
-        // postComment
       },
       { status: 200 }
     );

@@ -5,7 +5,14 @@ const postSchema = new mongoose.Schema(
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
-      required:true,
+      required: true,
+    },
+    image: {
+      type: String,
+      reqired: true,
+    },
+    video: {
+      type: String,
     },
     title: {
       type: String,
