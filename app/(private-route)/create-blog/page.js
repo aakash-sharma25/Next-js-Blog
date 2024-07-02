@@ -19,11 +19,11 @@ export default function page() {
   const handleUpload = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "gduvf4ky");
+    formData.append("upload_preset", process.env.Preset);
 
     try {
       const res = await axios.post(
-        "https://api.cloudinary.com/v1_1/dcmysvzfx/upload",
+        `https://api.cloudinary.com/v1_1/${process.env.Cloud_Name}/upload`,
         formData
       );
       if (res.data.resource_type === "image") {
@@ -34,7 +34,6 @@ export default function page() {
       alert("image uploaded");
     } catch (err) {
       alert("error occured");
-      // setError('An error occurred while uploading the file.');
     }
   };
 
