@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 
 export default function page() {
   let user = undefined;
-  // user = JSON.parse(user);
 
   const [blogs, setBlogs] = useState([]);
 
