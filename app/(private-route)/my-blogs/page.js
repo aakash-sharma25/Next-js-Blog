@@ -5,19 +5,21 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 export default function page() {
-  let user = localStorage.getItem("user");
-  user = JSON.parse(user);
+  let user = undefined;
+  // user = JSON.parse(user);
 
-  const [blogs,setBlogs]= useState([]);
+  const [blogs, setBlogs] = useState([]);
 
   const fetchBlogs = async () => {
-    const {data} = await axios.get(`/api/user/blogs/${user?.userId}`);
+    const { data } = await axios.get(`/api/user/blogs/${user?.userId}`);
     setBlogs(data?.blogs);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
+    user = localStorage.getItem("user");
+    user = JSON.parse(user);
     fetchBlogs();
-  },[])
+  }, []);
   return (
     <Container maxWidth="lg">
       <BlogCards blogs={blogs} />
