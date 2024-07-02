@@ -1,23 +1,15 @@
 "use client";
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 export default function Navbar() {
   const router = useRouter();
-  // let user = undefined;
-
-  // useEffect(()=>{
-  // user = localStorage.getItem("user");
-  // user = JSON.parse(user);
-  // },[])
-
   return (
     <>
       <AppBar>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography>Car rental </Typography>
+          <Typography>Blog Assignment </Typography>
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 5 }}>
             <Button
               variant="contained"
