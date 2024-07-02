@@ -51,6 +51,7 @@ export default function page() {
           image={blog?.image}
           title={blog?.title}
         />
+
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {blog?.title}
@@ -59,12 +60,27 @@ export default function page() {
             {blog?.content}
           </Typography>
         </CardContent>
+        {blog?.video && (
+          <CardMedia
+            sx={{ height: 300 }}
+            component="video"
+            controls
+            image={blog?.video}
+            title={blog?.title}
+          />
+        )}
         <CardActions>
           <Button onClick={() => setOpen(!open)}>Comments</Button>
         </CardActions>
       </Card>
       <Box sx={{ mt: 3 }}>
-        {open && <DislayComment comments={blog?.comments} postId={blog?._id} fetchBlog={fetchBlog} />}
+        {open && (
+          <DislayComment
+            comments={blog?.comments}
+            postId={blog?._id}
+            fetchBlog={fetchBlog}
+          />
+        )}
       </Box>
     </Container>
   );
